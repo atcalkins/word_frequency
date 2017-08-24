@@ -4,12 +4,21 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
+    @file = File.read(filename)
+    .gsub(/\W/, '')
+    .downcase
+    .spit("")
+    .reject{|x| STOP_WORDS.include? x}
+    @words = Hash.new
   end
 
   def frequency(word)
+
   end
 
+
   def frequencies
+
   end
 
   def top_words(number)
