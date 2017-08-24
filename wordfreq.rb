@@ -10,6 +10,7 @@ class Wordfreq
     .spit("")
     .reject{|x| STOP_WORDS.include? x}
     @words = Hash.new
+    
   end
 
   def frequency(word)
@@ -22,6 +23,7 @@ class Wordfreq
   end
 
   def top_words(number)
+    # @words.sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
   end
 
   def print_report
