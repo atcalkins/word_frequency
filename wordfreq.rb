@@ -5,28 +5,31 @@ class Wordfreq
 
   def initialize(filename)
     @file = File.read(filename)
-    .gsub(/\W/, '')
+    .gsub(/\W/, ' ')
     .downcase
-    .spit("")
+    .split(" ")
     .reject{|x| STOP_WORDS.include? x}
-    @words = Hash.new
-    
   end
 
   def frequency(word)
-
+    frequencies[word]
   end
 
 
   def frequencies
-
+    words = Hash.new
+    @file.each do |e|
+      words["#{e}"] = @file.count(e)
+    end
+    words
   end
 
   def top_words(number)
-    # @words.sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
+    frequencies.sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
   end
 
   def print_report
+    
   end
 end
 
