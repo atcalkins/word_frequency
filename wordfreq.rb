@@ -12,7 +12,7 @@ class Wordfreq
   end
 
   def frequency(word)
-    frequencies[word]
+    
   end
 
 
@@ -29,7 +29,7 @@ class Wordfreq
   end
 
   def print_report
-    
+
   end
 end
 

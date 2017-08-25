@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require_relative 'wordfreq'
 
+
 def fullpath(filename)
   File.absolute_path(File.join(File.dirname(__FILE__)), filename)
 end
