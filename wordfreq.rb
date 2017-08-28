@@ -8,28 +8,35 @@ class Wordfreq
     .gsub(/\W/, ' ')
     .downcase
     .split(" ")
-    .reject{|x| STOP_WORDS.include? x}
+    .reject{| x | STOP_WORDS.include? x}
   end
-
-  def frequency(word)
-    
-  end
-
 
   def frequencies
     words = Hash.new
-    @file.each do |e|
+    @file.each do | e |
       words["#{e}"] = @file.count(e)
     end
     words
   end
 
+  def frequency(word)
+    words = Hash.new
+    if words[word] == nil
+      0
+    else
+      words[word]
+    end
+
+  end
+
   def top_words(number)
-    frequencies.sort { |a, b| [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
+    frequencies.sort { | a, b | [b[1], a[0]] <=> [a[1], b[0]] }[0..(number - 1)]
   end
 
   def print_report
-
+    top_words(10).each do | key, value |
+      puts "#{key} |".rjust(9) + " #{value} ".ljust(4) + "*" * @file.count(key)
+end
   end
 end
 
